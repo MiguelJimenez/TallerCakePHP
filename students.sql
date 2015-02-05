@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 05-02-2015 a las 23:20:40
+-- Tiempo de generación: 05-02-2015 a las 23:20:04
 -- Versión del servidor: 5.5.8
 -- Versión de PHP: 5.3.5
 
