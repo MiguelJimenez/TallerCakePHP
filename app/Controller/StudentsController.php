@@ -6,13 +6,15 @@ class StudentsController extends AppController
 
 	public function index()
 	{
-		$this->set('estudiantes', $this->Student->find('all'));
+		$params = array('order' => 'name desc');
+		$this->set('estudiantes', $this->Student->find('all', $params));
 	}
 	public function add()
 	{
 		if($this->request->is('post')):
 		{
 			// AQUI INSERTA!!!
+			// $sql = INSERT INTO students....
 			if($this->Student->save($this->request->data))
 			{
 				$this->Session->setFlash('Estudiante guardado');
@@ -21,6 +23,29 @@ class StudentsController extends AppController
 			// endif;
 		}
 		endif;
+	}
+
+	public function edit($id = null)
+	{
+		$this->Student->id = $id;
+		if($this->request->is('get'))
+		{
+			$this->request->data = $this->Student->read();
+		}
+		else // Petición no get
+		{
+			if($this->Student->save($this->request->data))
+			{
+				$this->Session->setFlash('Estudiante '.$this->request->data['Student']['name'].' editado');
+				$this->redirect(array('action' => 'index'));
+			}
+			else
+			{
+				$this->Session->setFlash('No se pudo guardar');
+			}
+		}
+
+			
 	}
 
 }
