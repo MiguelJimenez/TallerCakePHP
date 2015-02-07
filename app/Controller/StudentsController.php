@@ -44,8 +44,22 @@ class StudentsController extends AppController
 				$this->Session->setFlash('No se pudo guardar');
 			}
 		}
+	}
 
-			
+	public function delete($id)
+	{
+		if($this->request->is('get'))
+		{
+			throw new MethodNotAllowedException();
+		}
+		else
+		{
+			if($this->Student->delete($id))
+			{
+				$this->Session->setFlash('Estudiante eliminado');
+				$this->redirect(array('action' => 'index'));
+			}
+		}
 	}
 
 }

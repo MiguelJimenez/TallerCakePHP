@@ -1,4 +1,5 @@
 <h1>Listado de estudiantes</h1>
+<?php echo $this->Html->link('Agregar estudiante', array('action' => 'add')); ?>
 
 <table>
 	<tr>
@@ -13,7 +14,8 @@
 		<td><?php echo $estudiante['Student']['name']; ?></td>
 		<td><?php echo $estudiante['Student']['last_name']; ?></td>
 		<td>
-			<?php $this->Html->link('Editar', array('action' => 'edit', $estudiante['Student']['id'])); ?>
+			<?php echo $this->Html->link('Editar', array('action' => 'edit', $estudiante['Student']['id'])); ?>
+			<?php echo $this->Form->postLink('Eliminar', array('action' => 'delete', $estudiante['Student']['id']), array('confirm' => '¿Estás seguro?')); ?>
 		</td>
 	</tr>
 
